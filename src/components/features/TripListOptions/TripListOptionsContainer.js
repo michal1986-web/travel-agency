@@ -15,6 +15,7 @@ const mapDispatchToProps = dispatch => ({
   addTripTag: tag => dispatch(addTripTag(tag)),
   removeTripTag: tag => dispatch(removeTripTag(tag)),
   changeTripDuration: duration => dispatch(changeTripDuration(duration)),
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TripListOptions);
