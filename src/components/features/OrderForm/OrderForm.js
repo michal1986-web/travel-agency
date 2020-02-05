@@ -6,24 +6,23 @@ import pricing from '../../../data/pricing.json';
 import {Row, Col} from 'react-flexbox-grid';
 import PropTypes from 'prop-types';
 
-const OrderForm = props => {
-  return (
-    <Row>
-      {pricing.map(option => (
-        <Col key={option.id} md={4}>
-          <OrderOption {...option} />
-        </Col>
-      ))}
-      <Col xs={12}>
-        <OrderSummary cost={props.tripCost} options={props.options}/>
+const OrderForm = ({options, tripCost, setOrderOption}) => ( 
+  <Row> 
+    {pricing.map(option => (
+      <Col key={option.id} md={4}>
+        <OrderOption {...option} currentValue={options[option.id]} setOrderOption={setOrderOption} />
       </Col>
-    </Row>
-  );
-};
+    ))}
+    <Col xs={12}>
+      <OrderSummary cost={tripCost} options={options}/>
+    </Col>
+  </Row>
+);
 
 OrderForm.propTypes = {
-  tripCost: PropTypes.string,
+  tripCost: PropTypes.node,
   options: PropTypes.object,
+  setOrderOption: PropTypes.func,
 };
 
 export default OrderForm; 
